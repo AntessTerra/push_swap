@@ -6,11 +6,26 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/15 16:50:14 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/17 22:37:03 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	*convert_list_to_array(t_stack *stack, int argc)
+{
+	int	*array;
+	int	i;
+
+	array = (int *)malloc(sizeof(int) * argc - 2);
+	i = 0;
+	while (i < argc - 1)
+	{
+		array[i++] = stack->num;
+		stack = stack->next;
+	}
+	return (array);
+}
 
 void	stack_delete(t_stack **stack)
 {

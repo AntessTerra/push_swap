@@ -6,7 +6,7 @@
 #    By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/15 13:56:55 by jbartosi          #+#    #+#              #
-#    Updated: 2023/02/15 16:02:45 by jbartosi         ###   ########.fr        #
+#    Updated: 2023/02/17 15:59:32 by jbartosi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror
 PRINTF = ft_printf
 LIBFT = ft_printf/libft
 
-SRC = push_swap.c list_manipul.c checker.c actions.c combine_actions.c
+SRC = push_swap.c list_manipul.c checker.c actions.c combine_actions.c bubble_sort.c
 OBJ = $(SRC:.c=.o)
 
 all: lib $(NAME)

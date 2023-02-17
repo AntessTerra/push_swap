@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:56:51 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/15 16:37:37 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/17 22:44:54 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,16 @@ int	main(int argc, char **argv)
 	t_stack	*stack1;
 	t_stack	*stack2;
 
+	if (argc == 1)
+		exit(0);
 	stack1 = convert_args_into_stack(argc, argv);
-	if (!stack1)
+	if (!stack1 || check_doubles(&stack1, argc) == 0)
 	{
 		ft_putstr_fd("Error\n", 2);
 		exit(0);
 	}
 	stack2 = NULL;
 	print_stacks(&stack1, &stack2);
+	stack_delete(&stack1);
 	return (0);
 }
