@@ -6,23 +6,23 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:51:32 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/17 22:15:14 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/18 15:36:09 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*bubble_sort(int *array, int argc)
+int	*bubble_sort(int *array, int len)
 {
 	int		i;
 	int		j;
 	int		tmp;
 
 	i = 0;
-	while (i < argc - 2)
+	while (i < len - 1)
 	{
 		j = 0;
-		while (j < argc - i - 2)
+		while (j < len - i - 1)
 		{
 			if (array[j] > array [j + 1])
 			{

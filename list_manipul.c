@@ -6,26 +6,11 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/17 22:37:03 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:43:25 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	*convert_list_to_array(t_stack *stack, int argc)
-{
-	int	*array;
-	int	i;
-
-	array = (int *)malloc(sizeof(int) * argc - 2);
-	i = 0;
-	while (i < argc - 1)
-	{
-		array[i++] = stack->num;
-		stack = stack->next;
-	}
-	return (array);
-}
 
 void	stack_delete(t_stack **stack)
 {
@@ -52,6 +37,41 @@ t_stack	*create_new(void)
 	return (item);
 }
 
+t_stack	*special_convert(t_stack *item, char *str, int i, int argc)
+{
+	int		x;
+	char	**strs;
+
+	strs = ft_split(str, ' ');
+	x = 0;
+	while (x < count_items(strs))
+	{
+		if (!check_arg(strs[x], argc))
+			return (NULL);
+		item->num = ft_atoi(strs[x]);
+		if (x < count_items(strs) - 1 || i < argc - 1)
+		{
+			item->next = create_new();
+			item = item->next;
+		}
+		free(strs[x]);
+		x++;
+	}
+	free(strs);
+	return (item);
+}
+
+t_stack	*normal_convert(t_stack *item, char *str, int i, int argc)
+{
+	item->num = ft_atoi(str);
+	if (i < argc - 1)
+	{
+		item->next = create_new();
+		item = item->next;
+	}
+	return (item);
+}
+
 t_stack	*convert_args_into_stack(int argc, char **argv)
 {
 	int		i;
@@ -63,16 +83,17 @@ t_stack	*convert_args_into_stack(int argc, char **argv)
 	item = first;
 	while (i < argc)
 	{
-		if (!check_arg(argv[i], argc))
+		if (check_space(argv[i]))
 		{
-			stack_delete(&first);
-			return (NULL);
+			item = special_convert(item, argv[i], i, argc);
+			if (item == NULL)
+				delete_error(&first);
 		}
-		item->num = ft_atoi(argv[i]);
-		if (i < argc - 1)
+		else
 		{
-			item->next = create_new();
-			item = item->next;
+			if (!check_arg(argv[i], argc))
+				delete_error(&first);
+			item = normal_convert(item, argv[i], i, argc);
 		}
 		i++;
 	}

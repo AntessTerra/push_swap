@@ -6,21 +6,49 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:24:40 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/17 22:19:38 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:11:15 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_doubles(t_stack **top, int argc)
+int	count_items(char **strs)
 {
-	int	*array;
+	int	i;
+
+	if (!strs)
+		return (0);
+	i = 0;
+	while (strs[i])
+		i++;
+	return (i);
+}
+
+int	check_space(char *str)
+{
 	int	i;
 
 	i = 0;
-	array = convert_list_to_array(*top, argc);
-	array = bubble_sort(array, argc);
-	while (i < argc - 2)
+	while (str[i])
+	{
+		if (str[i] == ' ')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	check_doubles(t_stack **top)
+{
+	int	*array;
+	int	i;
+	int	len;
+
+	i = 0;
+	len = stack_len(*top);
+	array = convert_list_to_array(*top, len);
+	array = bubble_sort(array, len);
+	while (i < len - 1)
 	{
 		if (array[i] >= array[i + 1])
 		{
@@ -46,11 +74,15 @@ int	check_int(char *str)
 int	check_arg(char *str, int argc)
 {
 	int	i;
+	int	len;
 
 	i = 0;
-	if (!check_int(str) || argc == 0)
+	len = ft_strlen(str);
+	if (str[0] == '-')
+		len--;
+	if (argc == 0 || len > 10)
 		return (0);
-	while (str[i])
+	while (str[i] && i < len)
 	{
 		if (str[0] == '-')
 			i++;
@@ -58,5 +90,7 @@ int	check_arg(char *str, int argc)
 			return (0);
 		i++;
 	}
+	if (len == 10 && !check_int(str))
+		return (0);
 	return (1);
 }
