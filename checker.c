@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:24:40 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/18 16:11:15 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:48:59 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	check_arg(char *str, int argc)
 	len = ft_strlen(str);
 	if (str[0] == '-')
 		len--;
-	if (argc == 0 || len > 10)
+	if (argc == 0 || len > 10 || len == 0)
 		return (0);
 	while (str[i] && i < len)
 	{
