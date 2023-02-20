@@ -6,12 +6,50 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:56:51 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/18 15:26:27 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:02:53 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	sort_three(t_stack **stack)
+{
+	if ((*stack)->num < (*stack)->next->num
+		&& (*stack)->next->num < (*stack)->next->next->num)
+		return ;
+	if ((*stack)->num > (*stack)->next->num
+		&& (*stack)->next->num < (*stack)->next->next->num
+		&& (*stack)->num < (*stack)->next->next->num)
+		ft_printf("sa\n");
+	else if ((*stack)->num > (*stack)->next->num
+		&& (*stack)->next->num < (*stack)->next->next->num
+		&& (*stack)->num > (*stack)->next->next->num)
+		ft_printf("ra\n");
+	else if ((*stack)->num < (*stack)->next->num
+		&& (*stack)->next->num > (*stack)->next->next->num
+		&& (*stack)->num < (*stack)->next->next->num)
+		ft_printf("sa\nra\n");
+	else if ((*stack)->num > (*stack)->next->num
+		&& (*stack)->next->num > (*stack)->next->next->num)
+		ft_printf("sa\nrra\n");
+	else if ((*stack)->num < (*stack)->next->num
+		&& (*stack)->next->num > (*stack)->next->next->num
+		&& (*stack)->num > (*stack)->next->next->num)
+		ft_printf("rra\n");
+}
+
+void	small_sort(t_stack **stack, int lenght)
+{
+	if (lenght == 1)
+		return ;
+	if (lenght == 2 && (*stack)->num > (*stack)->next->num)
+		ft_printf("sa\n");
+	else if (lenght == 3)
+		sort_three(stack);
+	else
+		quick_sort();
+}
+/*
 int	print_stacks(t_stack **top1, t_stack **top2)
 {
 	int		i;
@@ -46,11 +84,12 @@ int	print_stacks(t_stack **top1, t_stack **top2)
 		ft_printf("Stack2 is empty.\n");
 	return (0);
 }
-
+*/
 int	main(int argc, char **argv)
 {
 	t_stack	*stack1;
 	t_stack	*stack2;
+	int		lenght;
 
 	if (argc == 1)
 		exit(0);
@@ -58,7 +97,14 @@ int	main(int argc, char **argv)
 	if (!stack1 || check_doubles(&stack1) == 0)
 		exit_error();
 	stack2 = NULL;
-	print_stacks(&stack1, &stack2);
+	lenght = stack_len(stack1);
+	if (lenght < 4)
+	{
+		small_sort(&stack1, lenght);
+		stack_delete(&stack1);
+		return (0);
+	}
+	//print_stacks(&stack1, &stack2);
 	stack_delete(&stack1);
 	return (0);
 }

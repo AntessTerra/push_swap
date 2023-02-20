@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:51:52 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/18 16:24:12 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:53:48 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int		rr(t_stack **stack1, t_stack **stack2);
 int		rrr(t_stack **stack1, t_stack **stack2);
 void	exit_error(void);
 void	delete_error(t_stack **first);
+int		make(t_stack **stack);
 
 #endif
