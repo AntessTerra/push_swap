@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:51:52 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/20 13:53:48 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:20:27 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,20 @@ int		count_items(char **strs);
 int		check_space(char *str);
 int		stack_len(t_stack *stack);
 void	stack_delete(t_stack **stack);
-void	item_swap(int *a, int *b);
 int		*bubble_sort(int *array, int len);
 int		*convert_list_to_array(t_stack *stack, int len);
 int		check_doubles(t_stack **top);
-int		sab(t_stack **top);
-int		rab(t_stack	**top);
-int		rrab(t_stack **top);
-int		pab(t_stack **top_to, t_stack **top_from);
+int		sab(t_stack **top, char *str);
+int		rab(t_stack	**top, char *str);
+int		rrab(t_stack **top, char *str);
+int		pab(t_stack **top_to, t_stack **top_from, char *str);
 int		ss(t_stack **stack1, t_stack **stack2);
 int		rr(t_stack **stack1, t_stack **stack2);
 int		rrr(t_stack **stack1, t_stack **stack2);
 void	exit_error(void);
 void	delete_error(t_stack **first);
-int		make(t_stack **stack);
+int		check_sorted(t_stack *stack);
+void	sort_three(t_stack **stack);
+int		big_sort(t_stack **stack1);
 
 #endif

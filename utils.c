@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 13:59:22 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/18 16:33:56 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/21 14:38:52 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,17 @@ int	stack_len(t_stack *stack)
 		item = item->next;
 		i++;
 	}
+	return (i);
+}
+
+int	count_items(char **strs)
+{
+	int	i;
+
+	if (!strs)
+		return (0);
+	i = 0;
+	while (strs[i])
+		i++;
 	return (i);
 }

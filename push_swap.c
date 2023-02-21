@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:56:51 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/20 17:02:53 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:26:31 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	small_sort(t_stack **stack, int lenght)
 	else if (lenght == 3)
 		sort_three(stack);
 	else
-		quick_sort();
+		return ;
 }
 /*
 int	print_stacks(t_stack **top1, t_stack **top2)
@@ -85,6 +85,7 @@ int	print_stacks(t_stack **top1, t_stack **top2)
 	return (0);
 }
 */
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack1;
@@ -104,7 +105,6 @@ int	main(int argc, char **argv)
 		stack_delete(&stack1);
 		return (0);
 	}
-	//print_stacks(&stack1, &stack2);
 	stack_delete(&stack1);
 	return (0);
 }

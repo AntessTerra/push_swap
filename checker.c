@@ -6,22 +6,25 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:24:40 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/18 16:48:59 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/21 14:40:23 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	count_items(char **strs)
+int	check_sorted(t_stack *stack)
 {
 	int	i;
 
-	if (!strs)
-		return (0);
-	i = 0;
-	while (strs[i])
-		i++;
-	return (i);
+	i = stack->num;
+	while (stack)
+	{
+		if (i > stack->num)
+			return (0);
+		i = stack->num;
+		stack = stack->next;
+	}
+	return (1);
 }
 
 int	check_space(char *str)

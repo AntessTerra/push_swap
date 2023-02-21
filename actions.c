@@ -6,32 +6,35 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:27:50 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/17 15:56:53 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:22:01 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	item_swap(int *a, int *b)
+int	print_action(char *str)
 {
-	int	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-int	sab(t_stack **top)
-{
-	t_stack	*stack;
-
-	stack = *top;
-	if (stack && stack->next)
-		item_swap(&stack->num, &stack->next->num);
+	if (str[0] != '\0')
+		ft_printf("%s\n", str);
 	return (0);
 }
 
-int	rab(t_stack	**top)
+int	sab(t_stack **top, char *str)
+{
+	t_stack	*stack;
+	int		tmp;
+
+	stack = *top;
+	if (stack && stack->next)
+	{
+		tmp = stack->num;
+		stack->num = stack->next->num;
+		stack->next->num = tmp;
+	}
+	return (print_action(str));
+}
+
+int	rab(t_stack	**top, char *str)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -48,10 +51,10 @@ int	rab(t_stack	**top)
 	last->next = first;
 	first->next = NULL;
 	*top = stack;
-	return (0);
+	return (print_action(str));
 }
 
-int	rrab(t_stack **top)
+int	rrab(t_stack **top, char *str)
 {
 	t_stack	*next_to_last;
 	t_stack	*last;
@@ -69,10 +72,10 @@ int	rrab(t_stack **top)
 	last->next = stack;
 	next_to_last->next = NULL;
 	*top = last;
-	return (0);
+	return (print_action(str));
 }
 
-int	pab(t_stack **top_to, t_stack **top_from)
+int	pab(t_stack **top_to, t_stack **top_from, char *str)
 {
 	t_stack	*tmp;
 	t_stack	*to;
@@ -96,5 +99,5 @@ int	pab(t_stack **top_to, t_stack **top_from)
 		tmp->next = to;
 		*top_to = tmp;
 	}
-	return (0);
+	return (print_action(str));
 }
