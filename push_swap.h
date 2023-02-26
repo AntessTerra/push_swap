@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:51:52 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/21 15:20:27 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/26 15:39:49 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@
 typedef struct s_stack
 {
 	int				num;
+	int				index;
 	struct s_stack	*next;
 }				t_stack;
 
 typedef struct s_sort
 {
-	char	*result;
+	int		max_bits;
+	int		i;
+	int		j;
+	int		lenght;
 }				t_sort;
 
 t_stack	*convert_args_into_stack(int argc, char **argv);
@@ -46,7 +50,12 @@ int		rrr(t_stack **stack1, t_stack **stack2);
 void	exit_error(void);
 void	delete_error(t_stack **first);
 int		check_sorted(t_stack *stack);
-void	sort_three(t_stack **stack);
-int		big_sort(t_stack **stack1);
+int		sort_three(t_stack **stack);
+void	small_sort(t_stack **stack, t_stack **stack2, int lenght);
+void	radix_sort(t_stack **stack, t_stack **stack2);
+t_stack	*get_max(t_stack **stack);
+t_stack	*get_min(t_stack **stack);
+void	simlpify_numbers(t_stack **stack);
+int		print_stacks(t_stack **top1, t_stack **top2);
 
 #endif
