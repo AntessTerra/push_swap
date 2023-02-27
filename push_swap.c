@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:56:51 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/26 16:12:02 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:35:56 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ int	main(int argc, char **argv)
 		stack_delete(&stack1);
 		return (0);
 	}
-	//For 100 its 1084 and for 500 its 6784
-	radix_sort(&stack1, &stack2);
+	if (lenght <= 200)
+		fastest_sort(&stack1, &stack2);
+	else
+		radix_sort(&stack1, &stack2);
 	stack_delete(&stack1);
 	return (0);
 }

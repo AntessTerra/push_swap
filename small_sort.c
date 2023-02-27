@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:21:46 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/26 15:51:34 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:35:07 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	get_smallest_to_top(t_stack **stack)
 	t_stack	*first;
 
 	first = *stack;
-	if ((get_min(stack)->index) < (stack_len(*stack) / 2)
+	if ((get_index(stack, get_min(stack)->num)) < (stack_len(*stack) / 2)
 		+ (stack_len(*stack) % 2))
 	{
 		while (first->num != get_min(stack)->num)
@@ -54,7 +54,8 @@ void	get_smallest_to_top(t_stack **stack)
 			first = *stack;
 		}
 	}
-	else if ((get_min(stack)->index) > (stack_len(*stack) / 2) - 1)
+	else if ((get_index(stack, get_min(stack)->num))
+		> (stack_len(*stack) / 2) - 1)
 	{
 		while (first->num != get_min(stack)->num)
 		{
