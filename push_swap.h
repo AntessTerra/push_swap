@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:51:52 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/28 13:53:36 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:00:51 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_stack	*get_min(t_stack **stack);
 void	simlpify_numbers(t_stack **stack);
 int		get_index(t_stack **stack, int val);
 void	delete_inst(t_inst *inst);
+void	free_strs(char **strs);
 int		print_stacks(t_stack **top1, t_stack **top2);
 
 #endif

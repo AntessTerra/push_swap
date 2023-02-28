@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/28 13:46:49 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:02:06 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,19 @@ t_stack	*special_convert(t_stack *item, char *str, int i, int argc)
 	while (x < count_items(strs))
 	{
 		if (!check_arg(strs[x], argc))
+		{
+			free_strs(strs);
 			return (NULL);
+		}
 		item->num = ft_atoi(strs[x]);
 		if (x < count_items(strs) - 1 || i < argc - 1)
 		{
 			item->next = create_new();
 			item = item->next;
 		}
-		free(strs[x]);
 		x++;
 	}
-	free(strs);
+	free_strs(strs);
 	return (item);
 }
 

@@ -6,11 +6,21 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:21:46 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/28 13:39:23 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:01:27 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_strs(char **strs)
+{
+	int	i;
+
+	i = 0;
+	while (strs[i])
+		free(strs[i++]);
+	free(strs);
+}
 
 int	sort_three(t_stack **stack)
 {
