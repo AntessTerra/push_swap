@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 13:59:22 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/21 14:38:52 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:36:08 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void	exit_error(void)
 {
 	ft_putstr_fd("Error\n", 2);
-	exit(0);
+	exit(1);
 }
 
 void	delete_error(t_stack **first)
 {
 	stack_delete(first);
 	ft_putstr_fd("Error\n", 2);
-	exit(0);
+	exit(1);
 }
 
 int	*convert_list_to_array(t_stack *stack, int len)

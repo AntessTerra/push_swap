@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 13:59:22 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/27 14:05:15 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:30:24 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,18 @@ void	simlpify_numbers(t_stack **stack)
 	}
 	*stack = first;
 	free(array);
+}
+
+void	delete_inst(t_inst *inst)
+{
+	int	i;
+
+	i = 0;
+	while (i < 11)
+	{
+		if (inst[i].inst)
+			free(inst[i].inst);
+		i++;
+	}
+	free(inst);
 }
