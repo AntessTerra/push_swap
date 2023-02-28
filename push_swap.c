@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:56:51 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/27 15:35:56 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:54:10 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,21 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack1;
 	t_stack	*stack2;
+	t_inst	*inst;
 	int		lenght;
 
 	if (argc == 1)
 		exit(0);
-	stack1 = convert_args_into_stack(argc, argv);
+	inst = NULL;
+	stack1 = convert_args_into_stack(argc, argv, &inst);
 	if (!stack1 || check_doubles(&stack1) == 0)
 		exit_error();
 	simlpify_numbers(&stack1);
 	stack2 = NULL;
 	lenght = stack_len(stack1);
 	if (lenght < 6)
-	{
 		small_sort(&stack1, &stack2, lenght);
-		stack_delete(&stack1);
-		return (0);
-	}
-	if (lenght <= 200)
+	else if (lenght <= 200)
 		fastest_sort(&stack1, &stack2);
 	else
 		radix_sort(&stack1, &stack2);

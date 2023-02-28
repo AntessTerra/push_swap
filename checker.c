@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:07:33 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/28 11:35:57 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:47:18 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,12 +116,12 @@ int	main(int argc, char **argv)
 	inst = init_inst();
 	if (argc == 1)
 		exit(1);
-	stack1 = convert_args_into_stack(argc, argv);
+	stack1 = convert_args_into_stack(argc, argv, &inst);
 	if (!stack1 || check_doubles(&stack1) == 0)
 	{
 		delete_inst(inst);
-		ft_putstr_fd("Error\n", 2);
-		exit(1);
+		stack_delete(&stack1);
+		exit_error();
 	}
 	simlpify_numbers(&stack1);
 	stack2 = NULL;

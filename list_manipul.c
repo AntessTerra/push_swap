@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/26 13:17:13 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:46:49 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_stack	*normal_convert(t_stack *item, char *str, int i, int argc)
 	return (item);
 }
 
-t_stack	*convert_args_into_stack(int argc, char **argv)
+t_stack	*convert_args_into_stack(int argc, char **argv, t_inst **pinst)
 {
 	int		i;
 	t_stack	*first;
@@ -87,12 +87,12 @@ t_stack	*convert_args_into_stack(int argc, char **argv)
 		{
 			item = special_convert(item, argv[i], i, argc);
 			if (item == NULL)
-				delete_error(&first);
+				delete_error(&first, pinst);
 		}
 		else
 		{
 			if (!check_arg(argv[i], argc))
-				delete_error(&first);
+				delete_error(&first, pinst);
 			item = normal_convert(item, argv[i], i, argc);
 		}
 		i++;

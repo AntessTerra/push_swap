@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 13:59:22 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/28 11:36:08 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:45:19 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ void	exit_error(void)
 	exit(1);
 }
 
-void	delete_error(t_stack **first)
+void	delete_error(t_stack **first, t_inst **pinst)
 {
 	stack_delete(first);
+	if (*pinst != NULL)
+		delete_inst(*pinst);
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
