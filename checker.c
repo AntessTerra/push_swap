@@ -6,7 +6,7 @@
 /*   By: jbartosi <jbartosi@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:07:33 by jbartosi          #+#    #+#             */
-/*   Updated: 2023/02/28 13:47:18 by jbartosi         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:06:15 by jbartosi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	main(int argc, char **argv)
 
 	inst = init_inst();
 	if (argc == 1)
-		exit(1);
+		exit(0);
 	stack1 = convert_args_into_stack(argc, argv, &inst);
 	if (!stack1 || check_doubles(&stack1) == 0)
 	{
